@@ -1,3 +1,13 @@
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   width: 100vw;
   text-align: center;
@@ -20,7 +30,7 @@
 
 .App-header {
   background-color: #282c34;
-  height: 20vh;
+  height: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,6 +60,24 @@
   margin-right: 20px;
 }
 
+.topic-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.topic-button {
+  border: solid black 2px;
+  min-width: 70px;
+  min-height: 20px;
+  border-radius: 4px;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .articles {
   margin: 0;
   max-width: 1200px;
@@ -59,7 +87,14 @@
 }
 
 .article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+  height: 25vh;
   border: solid black 3px;
+
   margin: 5px;
 }
 
