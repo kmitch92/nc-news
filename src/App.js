@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './App.css';
 
 function App() {
@@ -10,6 +9,7 @@ function App() {
         <h1>NC News</h1>
         <Nav />
       </header>
+
       <Articles />
     </div>
   );
