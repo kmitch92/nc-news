@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Nav = () => {
   return (
     <div className="nav">
@@ -9,7 +11,9 @@ const Nav = () => {
       </span>
 
       <span>
-        <h2>USERS</h2>
+        <Link className="link-button" to={'/users'}>
+          <h2>USERS</h2>
+        </Link>
       </span>
     </div>
   );

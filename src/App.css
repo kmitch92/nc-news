@@ -41,7 +41,7 @@ p {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #eb1b24;
   height: 25vh;
   display: flex;
   flex-direction: column;
@@ -49,6 +49,22 @@ p {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.top-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.nc-logo {
+  max-width: 50vw;
+  height: auto;
 }
 
 .nav {
@@ -63,10 +79,6 @@ p {
   display: flex;
   justify-content: center;
   margin-left: 10px;
-}
-
-.nav h2 {
-  margin-right: 15px;
 }
 
 .display-pic {
@@ -86,7 +98,6 @@ p {
 }
 
 .link-button {
-  border: solid black 2px;
   min-width: 70px;
   max-width: 100px;
   min-height: 20px;
@@ -95,6 +106,12 @@ p {
   display: flex;
   justify-content: center;
   align-content: center;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .articles {
@@ -112,7 +129,8 @@ p {
   text-align: center;
   align-items: center;
   height: 25vh;
-  border: solid black 3px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
   margin: 5px;
 }
@@ -152,27 +170,32 @@ p {
 }
 
 .comments-box {
-  border: solid black 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
   width: 100%;
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
-  background-color: #f5f9fa;
+  background-color: #eb1b24;
+  color: white;
 }
 
 .comment {
-  border: solid black 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
   width: 96.5%;
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
   background-color: #ffffff;
+  color: black;
 }
 
 .hidden-comment {
   display: flex;
   border-radius: 5px;
-  border: solid black 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  color: black;
   width: 96.5%;
   background-color: #ffffff;
   margin: 3px;
@@ -189,6 +212,44 @@ p {
   background-color: #ffffff;
 }
 
+.comment-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-input {
+  width: 100%;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.users-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-img {
+  height: 20vh;
+  width: auto;
+  margin-right: 15px;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  border-radius: 10px;
+  margin: 5px;
 }

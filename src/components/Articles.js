@@ -5,7 +5,6 @@ import { useParams, Link } from 'react-router-dom';
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
-
   const { topic } = useParams();
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const Articles = () => {
         return response.data;
       })
       .then((articles) => {
-        console.log(articles[0]);
         return setArticles(articles);
       });
   }, [topic]);

@@ -5,15 +5,19 @@ import { useParams, Link } from 'react-router-dom';
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [isActiveComment, setActiveComment] = useState(false);
+  const [textInput, setTextInput] = useState('');
 
   const handleToggle = () => {
     setActiveComment(!isActiveComment);
   };
 
+  const user = 'tickle122';
+
   useEffect(() => {
     axios
       .get(
-        `https://backend-news-project.herokuapp.com/api/articles/${article_id}/comments`
+        `https://backend-news-project.herokuapp.com/api/articles/${article_id}/comments`,
+        {}
       )
       .then((response) => {
         return response.data;
@@ -26,6 +30,42 @@ const Comments = ({ article_id }) => {
         return setComments(sortedComments);
       });
   }, []);
+
+  const currentDate = new Date();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = { username: user, body: textInput };
+
+    setTextInput('');
+    if (params.username && params.body) {
+      setComments((curr) => [
+        ...curr,
+        {
+          author: user,
+          body: params.body,
+          created_at: currentDate.toISOString(),
+          comment_id: 999999,
+        },
+      ]);
+      axios
+        .post(
+          `https://backend-news-project.herokuapp.com/api/articles/${article_id}/comments`,
+          params
+        )
+        .then((response) => {
+          console.log(response);
+        });
+    } else {
+      window.alert('Something went wrong!');
+    }
+  };
+
+  const handleBodyChange = (event) => {
+    event.preventDefault();
+    setTextInput(event.target.value);
+    console.log('textInput at handleBodyChange', textInput);
+  };
 
   return (
     <section className="comments-box">
@@ -43,9 +83,21 @@ const Comments = ({ article_id }) => {
           </div>
         );
       })}
-      <form>
-        <input type="text"></input>
-        <button type="submit">Submit</button>
+      <form className="comment-form">
+        <input
+          onChange={(event) => {
+            handleBodyChange(event);
+          }}
+          type="text"
+          value={textInput}
+          className="comment-input"
+        ></input>
+        <button
+          onClick={(event) => handleSubmit(event)}
+          className="comment-submit"
+        >
+          Submit
+        </button>
       </form>
     </section>
   );
