@@ -60,10 +60,11 @@ p {
   justify-content: flex-start;
   align-items: center;
   padding-right: 5px;
+  margin-bottom: 15px;
 }
 
 .nc-logo {
-  max-width: 50vw;
+  max-width: 45vw;
   height: auto;
 }
 
@@ -75,19 +76,41 @@ p {
   align-content: center;
 }
 
+.nav-button {
+  min-width: 70px;
+  max-width: 100px;
+  min-height: 20px;
+  border-radius: 4px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 15px;
+  padding: 5px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #eb1b24;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
 .you-user {
   display: flex;
   justify-content: center;
-  margin-left: 10px;
+  align-items: center;
+  margin-left: 20px;
+  border: solid 2px white;
+  border-radius: 20px;
+  padding: 7px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .display-pic {
-  background-color: grey;
+  background-color: white;
   height: 50px;
   width: 50px;
   border-radius: 25px;
   align-self: center;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .topic-buttons {
@@ -102,15 +125,36 @@ p {
   max-width: 100px;
   min-height: 20px;
   border-radius: 4px;
-  background-color: lightgrey;
+  background-color: #eb1b24;
   display: flex;
   justify-content: center;
   align-content: center;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 8px;
   text-decoration: none;
-  color: black;
+  color: white;
+  font-weight: bolder;
+  font-size: larger;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.article-button {
+  min-width: 70px;
+  max-width: 100px;
+  min-height: 20px;
+  border-radius: 4px;
+  background-color: #eb1b24;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -164,8 +208,12 @@ p {
 }
 
 .voter button {
-  margin-right: 5px;
-
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 5px;
+  padding: 10px;
   font-size: x-large;
 }
 
@@ -216,10 +264,25 @@ p {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2px;
 }
 
 .comment-input {
   width: 100%;
+  border-radius: 5px;
+}
+
+.comment-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eb1b24;
+  font-weight: 1000;
+  font-size: larger;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 5px;
+  margin-left: 5px;
 }
 
 .App-link {
@@ -230,11 +293,13 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 6px;
 }
 
 .users {
   display: flex;
   flex-direction: column;
+  padding: 6px;
 }
 
 .user-img {
@@ -248,8 +313,13 @@ p {
   flex-direction: row;
   justify-content: space-between;
   padding: 15px;
+  margin-top: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
   border-radius: 10px;
   margin: 5px;
+}
+
+.user-info h4 {
+  color: #eb1b24;
 }

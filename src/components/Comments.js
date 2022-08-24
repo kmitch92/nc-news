@@ -96,7 +96,7 @@ const Comments = ({ article_id }) => {
           onClick={(event) => handleSubmit(event)}
           className="comment-submit"
         >
-          Submit
+          Post
         </button>
       </form>
     </section>

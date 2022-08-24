@@ -11,7 +11,7 @@ const Nav = () => {
       </span>
 
       <span>
-        <Link className="link-button" to={'/users'}>
+        <Link className="nav-button" to={'/users'}>
           <h2>USERS</h2>
         </Link>
       </span>

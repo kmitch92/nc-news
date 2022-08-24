@@ -28,9 +28,7 @@ const Users = () => {
               <img className="user-img" src={user.avatar_url} />
               <div className="user-info">
                 <h4>{user.username}</h4>
-                <h4>Real Name: {user.name}</h4>
-
-                <p>lorem20</p>
+                <h5>Real Name: {user.name}</h5>
               </div>
             </div>
           );
