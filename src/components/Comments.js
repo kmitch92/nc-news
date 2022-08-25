@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
-  const [isActiveComment, setActiveComment] = useState();
+  const [isActiveComment, setActiveComment] = useState(false);
   const [textInput, setTextInput] = useState('');
 
   const handleToggle = () => {
@@ -65,8 +65,18 @@ const Comments = ({ article_id }) => {
       'deletable-comment',
       'deleted-comment'
     );
-    axios.delete(
-      `https://backend-news-project.herokuapp.com/api/comments/${event.target.value}`
+    axios
+      .delete(
+        `https://backend-news-project.herokuapp.com/api/comments/${event.target.value}`
+      )
+      .catch(() => {
+        window.alert(
+          "Sorry, the comment couldn't be deleted, please try again later"
+        );
+      });
+    event.target.parentElement.parentElement.classList.replace(
+      'deleted-comment',
+      'deletable-comment'
     );
   };
 
@@ -79,9 +89,9 @@ const Comments = ({ article_id }) => {
     <section className="comments-box">
       <h4>Comments</h4>
       <button className="comments-button" onClick={handleToggle}>
-        View
+        {isActiveComment ? 'Hide' : 'View'}
       </button>
-      {comments.map((comment, index) => {
+      {comments.map((comment) => {
         if (comment.author !== user) {
           return (
             <div
