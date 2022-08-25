@@ -6,6 +6,12 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
   const { topic } = useParams();
+  const [sortBy, setSortBy] = useState('created_at');
+  const [sortOrder, setSortOrder] = useState('DESC');
+  const [params, setParams] = useState({
+    sort_by: 'votes',
+    order: 'DESC',
+  });
 
   useEffect(() => {
     fetch('https://backend-news-project.herokuapp.com/api/topics')
@@ -18,10 +24,10 @@ const Articles = () => {
   }, []);
 
   useEffect(() => {
-    let params;
     if (topic) {
-      params = { topic: topic };
+      params.topic = topic;
     }
+
     axios
       .get('https://backend-news-project.herokuapp.com/api/articles', {
         params,
@@ -32,7 +38,19 @@ const Articles = () => {
       .then((articles) => {
         return setArticles(articles);
       });
-  }, [topic]);
+  }, [topic, params]);
+
+  const handleSortBy = (event) => {
+    setSortBy(event.target.value);
+  };
+
+  const handleSortOrder = (event) => {
+    setSortOrder(event.target.value);
+  };
+
+  const handleSortClick = () => {
+    setParams({ sort_by: sortBy, order: sortOrder });
+  };
 
   return (
     <section className="articles">
@@ -51,6 +69,20 @@ const Articles = () => {
             </Link>
           );
         })}
+      </div>
+      <div className="sort-fields">
+        <select onChange={handleSortBy}>
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
+        </select>
+        <select onChange={handleSortOrder}>
+          <option value="DESC">Descending</option>
+          <option value="ASC">Ascending</option>
+        </select>
+        <button onClick={handleSortClick} className="link-button">
+          SORT
+        </button>
       </div>
 
       {articles.map((article, index) => {
