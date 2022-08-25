@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
-  const [isActiveComment, setActiveComment] = useState(false);
+  const [isActiveComment, setActiveComment] = useState();
   const [textInput, setTextInput] = useState('');
 
   const handleToggle = () => {
@@ -48,41 +47,79 @@ const Comments = ({ article_id }) => {
           comment_id: 999999,
         },
       ]);
-      axios
-        .post(
-          `https://backend-news-project.herokuapp.com/api/articles/${article_id}/comments`,
-          params
-        )
-        .then((response) => {
-          console.log(response);
-        });
+      axios.post(
+        `https://backend-news-project.herokuapp.com/api/articles/${article_id}/comments`,
+        params
+      );
     } else {
       window.alert("Your comment can't be empty!");
     }
   };
 
+  const handleDelete = (event) => {
+    event.preventDefault();
+
+    console.log(event);
+
+    event.target.parentElement.parentElement.classList.replace(
+      'deletable-comment',
+      'deleted-comment'
+    );
+    axios.delete(
+      `https://backend-news-project.herokuapp.com/api/comments/${event.target.value}`
+    );
+  };
+
   const handleBodyChange = (event) => {
     event.preventDefault();
     setTextInput(event.target.value);
-    console.log('textInput at handleBodyChange', textInput);
   };
 
   return (
     <section className="comments-box">
       <h4>Comments</h4>
-      {comments.map((comment) => {
-        return (
-          <div
-            onClick={handleToggle}
-            key={comment.comment_id}
-            className={isActiveComment ? 'comment' : 'hidden-comment'}
-          >
-            <h4>{comment.author}</h4>
-            <h4>{comment.created_at}</h4>
-            <p>{comment.body}</p>
-          </div>
-        );
+      <button className="comments-button" onClick={handleToggle}>
+        View
+      </button>
+      {comments.map((comment, index) => {
+        if (comment.author !== user) {
+          return (
+            <div
+              key={comment.comment_id}
+              id={'id' + comment.comment_id}
+              className={isActiveComment ? 'comment' : 'hidden-comment'}
+            >
+              <h4>{comment.author}</h4>
+              <h4>{comment.created_at}</h4>
+              <p>{comment.body}</p>
+            </div>
+          );
+        } else
+          return (
+            <div
+              key={comment.comment_id}
+              className={
+                isActiveComment ? 'deletable-comment' : 'hidden-comment'
+              }
+            >
+              <h4>{comment.author}</h4>
+              <h4>{comment.created_at}</h4>
+              <div className="comment-inner">
+                <p>{comment.body}</p>
+                <button
+                  onClick={handleDelete}
+                  value={comment.comment_id}
+                  className="delete-button"
+                >
+                  X
+                </button>
+              </div>
+            </div>
+          );
       })}
+      <button className="comments-button" onClick={handleToggle}>
+        View
+      </button>
       <form className="comment-form">
         <textarea
           onChange={(event) => {
