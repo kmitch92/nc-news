@@ -57,7 +57,7 @@ const Comments = ({ article_id }) => {
           console.log(response);
         });
     } else {
-      window.alert('Something went wrong!');
+      window.alert("Your comment can't be empty!");
     }
   };
 
@@ -84,19 +84,18 @@ const Comments = ({ article_id }) => {
         );
       })}
       <form className="comment-form">
-        <input
+        <textarea
           onChange={(event) => {
             handleBodyChange(event);
           }}
-          type="text"
           value={textInput}
           className="comment-input"
-        ></input>
+        />
         <button
           onClick={(event) => handleSubmit(event)}
           className="comment-submit"
         >
-          Submit
+          Post
         </button>
       </form>
     </section>

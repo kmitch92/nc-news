@@ -58,12 +58,12 @@ const Articles = () => {
           <div className="article" key={index}>
             <h4>{article.title}</h4>
             <h4>By: {article.author}</h4>
-            <p>lorem20</p>
+            <p>{article.body.substring(0, 49) + '...'}</p>
             <Link
-              className="link-button"
+              className="article-button"
               to={'/articles/' + article.article_id}
             >
-              READ MORE
+              MORE
             </Link>
           </div>
         );
