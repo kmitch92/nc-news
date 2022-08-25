@@ -143,8 +143,50 @@ select {
   min-width: 50px;
   max-width: 80px;
   min-height: 20px;
+  max-height: 32px;
   border-radius: 4px;
   background-color: #eb1b24;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-size: larger;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.comments-button {
+  min-width: 50px;
+  max-width: 80px;
+  min-height: 20px;
+  max-height: 32px;
+  border-radius: 4px;
+  color: #eb1b24;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+
+  border-radius: 8px;
+  text-decoration: none;
+  background-color: white;
+  font-weight: bolder;
+  font-size: larger;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.delete-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #eb1b24;
+  align-self: flex-end;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -156,6 +198,16 @@ select {
   font-weight: bolder;
   font-size: larger;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.comment-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.deleted-comment {
+  display: none;
 }
 
 .article-button {
@@ -263,6 +315,20 @@ select {
 }
 
 .comment {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  width: 96.5%;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: black;
+}
+
+.deletable-comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
   width: 96.5%;
