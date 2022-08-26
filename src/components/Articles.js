@@ -61,54 +61,56 @@ const Articles = () => {
 
   if (!error) {
     return (
-      <section className="articles">
-        <div className="topic-buttons">
-          <Link className="topic-button" to="/articles">
-            All
-          </Link>
-          {topics.map((topic) => {
+      <div className="articles-wrapper">
+        <section className="articles">
+          <div className="topic-buttons">
+            <Link className="topic-button" to="/articles">
+              All
+            </Link>
+            {topics.map((topic) => {
+              return (
+                <Link
+                  to={'/articles/topic=' + topic.slug}
+                  className="topic-button"
+                  key={topic.slug}
+                >
+                  {topic.slug}
+                </Link>
+              );
+            })}
+          </div>
+          <div className="sort-fields">
+            <select onChange={handleSortBy}>
+              <option value="created_at">Date</option>
+              <option value="comment_count">Comment Count</option>
+              <option value="votes">Votes</option>
+            </select>
+            <select onChange={handleSortOrder}>
+              <option value="DESC">Descending</option>
+              <option value="ASC">Ascending</option>
+            </select>
+            <button onClick={handleSortClick} className="sort-button">
+              SORT
+            </button>
+          </div>
+
+          {articles.map((article, index) => {
             return (
-              <Link
-                to={'/articles/topic=' + topic.slug}
-                className="topic-button"
-                key={topic.slug}
-              >
-                {topic.slug}
-              </Link>
+              <div className="article" key={index}>
+                <h4>{article.title}</h4>
+                <h4>By: {article.author}</h4>
+                <p>{article.body.substring(0, 49) + '...'}</p>
+                <Link
+                  className="article-button"
+                  to={'/articles/' + article.article_id}
+                >
+                  MORE
+                </Link>
+              </div>
             );
           })}
-        </div>
-        <div className="sort-fields">
-          <select onChange={handleSortBy}>
-            <option value="created_at">Date</option>
-            <option value="comment_count">Comment Count</option>
-            <option value="votes">Votes</option>
-          </select>
-          <select onChange={handleSortOrder}>
-            <option value="DESC">Descending</option>
-            <option value="ASC">Ascending</option>
-          </select>
-          <button onClick={handleSortClick} className="sort-button">
-            SORT
-          </button>
-        </div>
-
-        {articles.map((article, index) => {
-          return (
-            <div className="article" key={index}>
-              <h4>{article.title}</h4>
-              <h4>By: {article.author}</h4>
-              <p>{article.body.substring(0, 49) + '...'}</p>
-              <Link
-                className="article-button"
-                to={'/articles/' + article.article_id}
-              >
-                MORE
-              </Link>
-            </div>
-          );
-        })}
-      </section>
+        </section>
+      </div>
     );
   } else return <ErrorPage err={error} />;
 };

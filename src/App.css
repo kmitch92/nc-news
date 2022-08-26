@@ -130,10 +130,22 @@ section {
 }
 
 @media only screen and (min-width: 1000px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .articles {
     min-width: 1000px;
-    margin-left: 35vw;
-    margin-right: 35vw;
+    max-width: 1300px;
+    /* margin-left: 35vw;
+    margin-right: 35vw; */
+  }
+
+  .articles-wrapper {
+    display: flex;
+    justify-content: center;
   }
 }
 
