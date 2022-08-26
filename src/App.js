@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Article from './components/Article';
 import Users from './components/Users';
 import logo from './NC LOGO RED.png';
+import ErrorPage from './components/ErrorPage';
 
 import './App.css';
 
@@ -21,9 +22,10 @@ function App() {
         </header>
       </div>
       <Routes>
+        <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<Articles />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/:topic" element={<Articles />} />
+        <Route path="/articles/topic=:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<Article />} />
         <Route path="/users" element={<Users />} />
       </Routes>

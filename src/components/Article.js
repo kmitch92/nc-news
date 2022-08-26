@@ -2,11 +2,13 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Comments from './Comments';
+import ErrorPage from './ErrorPage';
 
 const Article = () => {
   const [article, setArticle] = useState({});
   const { article_id } = useParams();
   const [votes, setVotes] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
@@ -19,6 +21,9 @@ const Article = () => {
       .then((article) => {
         setVotes(article.votes);
         return setArticle(article);
+      })
+      .catch((err) => {
+        setError(err);
       });
   }, []);
 
@@ -38,26 +43,28 @@ const Article = () => {
       });
   };
 
-  return (
-    <div className="article-page">
-      <Link to="/articles" className="link-button">
-        HOME
-      </Link>
-      <section className="article-layout">
-        <h2>{article.title}</h2>
-        <h3>BY: {article.author}</h3>
-        <h3>ON: {article.topic}</h3>
-        <p>{article.body}</p>
-        <div className="voter">
-          <button onClick={handleClick}>👍</button>
-          <h4>VOTES: {votes}</h4>
-        </div>
+  if (!error) {
+    return (
+      <div className="article-page">
+        <Link to="/articles" className="link-button">
+          HOME
+        </Link>
+        <section className="article-layout">
+          <h2>{article.title}</h2>
+          <h3>BY: {article.author}</h3>
+          <h3>ON: {article.topic}</h3>
+          <p>{article.body}</p>
+          <div className="voter">
+            <button onClick={handleClick}>👍</button>
+            <h4>VOTES: {votes}</h4>
+          </div>
 
-        <h4>POSTED: {article.created_at}</h4>
-      </section>
-      <Comments article_id={article_id} />
-    </div>
-  );
+          <h4>POSTED: {article.created_at}</h4>
+        </section>
+        <Comments article_id={article_id} />
+      </div>
+    );
+  } else return <ErrorPage err={error} />;
 };
 
 export default Article;
