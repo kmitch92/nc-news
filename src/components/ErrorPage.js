@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const ErrorPage = ({ err }) => {
-  console.log(err);
   if (!err) {
     return (
       <div className="error-page">

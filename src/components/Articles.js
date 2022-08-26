@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
+import './Articles.css';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -62,14 +63,14 @@ const Articles = () => {
     return (
       <section className="articles">
         <div className="topic-buttons">
-          <Link className="link-button" to="/articles">
+          <Link className="topic-button" to="/articles">
             All
           </Link>
           {topics.map((topic) => {
             return (
               <Link
                 to={'/articles/topic=' + topic.slug}
-                className="link-button"
+                className="topic-button"
                 key={topic.slug}
               >
                 {topic.slug}
@@ -87,7 +88,7 @@ const Articles = () => {
             <option value="DESC">Descending</option>
             <option value="ASC">Ascending</option>
           </select>
-          <button onClick={handleSortClick} className="link-button">
+          <button onClick={handleSortClick} className="sort-button">
             SORT
           </button>
         </div>

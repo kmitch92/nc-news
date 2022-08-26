@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import './Comments.css';
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -58,8 +59,6 @@ const Comments = ({ article_id }) => {
 
   const handleDelete = (event) => {
     event.preventDefault();
-
-    console.log(event);
 
     event.target.parentElement.parentElement.classList.replace(
       'deletable-comment',
